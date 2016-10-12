@@ -1,0 +1,11 @@
+F:\PROJECTS\WPF\NewLazyPomo\LazyPomo\LazyPomo\bin\Debug\LazyPomo.exe.config
+F:\PROJECTS\WPF\NewLazyPomo\LazyPomo\LazyPomo\bin\Debug\LazyPomo.exe
+F:\PROJECTS\WPF\NewLazyPomo\LazyPomo\LazyPomo\bin\Debug\LazyPomo.pdb
+F:\PROJECTS\WPF\NewLazyPomo\LazyPomo\LazyPomo\obj\Debug\LazyPomo.csprojResolveAssemblyReference.cache
+F:\PROJECTS\WPF\NewLazyPomo\LazyPomo\LazyPomo\obj\Debug\LazyPomo.Form1.resources
+F:\PROJECTS\WPF\NewLazyPomo\LazyPomo\LazyPomo\obj\Debug\LazyPomo.Properties.Resources.resources
+F:\PROJECTS\WPF\NewLazyPomo\LazyPomo\LazyPomo\obj\Debug\LazyPomo.csproj.GenerateResource.Cache
+F:\PROJECTS\WPF\NewLazyPomo\LazyPomo\LazyPomo\obj\Debug\LazyPomo.exe
+F:\PROJECTS\WPF\NewLazyPomo\LazyPomo\LazyPomo\obj\Debug\LazyPomo.pdb
+F:\PROJECTS\WPF\NewLazyPomo\LazyPomo\LazyPomo\bin\Debug\CircularProgressBar.dll
+F:\PROJECTS\WPF\NewLazyPomo\LazyPomo\LazyPomo\obj\Debug\LazyPomo.Code.CircularProgressbar.resources
