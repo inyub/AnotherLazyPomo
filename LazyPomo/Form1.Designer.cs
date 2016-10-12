@@ -166,6 +166,7 @@
             this.btnPin.TabIndex = 1;
             this.btnPin.Text = "Pin";
             this.btnPin.UseVisualStyleBackColor = true;
+            this.btnPin.Click += new System.EventHandler(this.btnPin_Click);
             // 
             // btnSound
             // 

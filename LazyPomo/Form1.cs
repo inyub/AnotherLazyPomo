@@ -30,7 +30,7 @@ namespace LazyPomo
         int mouseX = 0;
         int mouseY = 0;
         bool mouseDown;
-
+        bool checkTop = false;
 
         public Form1()
         {
@@ -419,7 +419,24 @@ namespace LazyPomo
 
         }
 
-
         // END Total Time
+
+        //Start Always on Top 
+        private void btnPin_Click(object sender, EventArgs e)
+        {
+            if (checkTop == false)
+            {
+                this.TopMost = true;
+                checkTop = true;
+            }
+            else
+            {
+                this.TopMost = false;
+                checkTop = false;
+            }
+        }
+        //End Always on Top
+
+
     }
 }
