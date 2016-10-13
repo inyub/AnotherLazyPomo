@@ -40,7 +40,6 @@
             this.lblCountdownMin = new System.Windows.Forms.Label();
             this.btnPin = new System.Windows.Forms.Button();
             this.btnSound = new System.Windows.Forms.Button();
-            this.pbProgressbar = new LazyPomo.Code.CircularProgressbar();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -63,6 +62,8 @@
             this.rtxtSave = new System.Windows.Forms.RichTextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnSaveSettings = new System.Windows.Forms.Button();
+            this.pbProgressbar = new LazyPomo.Code.CircularProgressbar();
             this.pnlMain.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.pnlTimer.SuspendLayout();
@@ -143,6 +144,7 @@
             // 
             this.lblCountDownDivider.BackColor = System.Drawing.Color.Transparent;
             this.lblCountDownDivider.Font = new System.Drawing.Font("Myriad Pro Light", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountDownDivider.ForeColor = System.Drawing.Color.LimeGreen;
             this.lblCountDownDivider.Location = new System.Drawing.Point(89, 79);
             this.lblCountDownDivider.Name = "lblCountDownDivider";
             this.lblCountDownDivider.Size = new System.Drawing.Size(16, 36);
@@ -154,17 +156,19 @@
             // 
             this.lblCountdownSec.BackColor = System.Drawing.Color.Transparent;
             this.lblCountdownSec.Font = new System.Drawing.Font("Myriad Pro Light", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountdownSec.ForeColor = System.Drawing.Color.LimeGreen;
             this.lblCountdownSec.Location = new System.Drawing.Point(100, 79);
             this.lblCountdownSec.Name = "lblCountdownSec";
             this.lblCountdownSec.Size = new System.Drawing.Size(54, 36);
             this.lblCountdownSec.TabIndex = 4;
-            this.lblCountdownSec.Text = "ss";
+            this.lblCountdownSec.Text = "00";
             this.lblCountdownSec.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCountdownMin
             // 
             this.lblCountdownMin.BackColor = System.Drawing.Color.Transparent;
             this.lblCountdownMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountdownMin.ForeColor = System.Drawing.Color.LimeGreen;
             this.lblCountdownMin.Location = new System.Drawing.Point(46, 79);
             this.lblCountdownMin.Name = "lblCountdownMin";
             this.lblCountdownMin.Size = new System.Drawing.Size(50, 36);
@@ -190,14 +194,6 @@
             this.btnSound.TabIndex = 0;
             this.btnSound.Text = "Sound";
             this.btnSound.UseVisualStyleBackColor = true;
-            // 
-            // pbProgressbar
-            // 
-            this.pbProgressbar.Location = new System.Drawing.Point(0, 0);
-            this.pbProgressbar.Margin = new System.Windows.Forms.Padding(30);
-            this.pbProgressbar.Name = "pbProgressbar";
-            this.pbProgressbar.Size = new System.Drawing.Size(195, 195);
-            this.pbProgressbar.TabIndex = 2;
             // 
             // pnlMenu
             // 
@@ -258,6 +254,7 @@
             // pnlEditTimebox
             // 
             this.pnlEditTimebox.BackColor = System.Drawing.Color.DarkGray;
+            this.pnlEditTimebox.Controls.Add(this.btnSaveSettings);
             this.pnlEditTimebox.Controls.Add(this.label2);
             this.pnlEditTimebox.Controls.Add(this.label1);
             this.pnlEditTimebox.Controls.Add(this.txtEditLazy);
@@ -271,7 +268,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(114, 3);
+            this.label2.Location = new System.Drawing.Point(81, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 3;
@@ -281,7 +278,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 3);
+            this.label1.Location = new System.Drawing.Point(6, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 2;
@@ -290,20 +287,22 @@
             // txtEditLazy
             // 
             this.txtEditLazy.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEditLazy.Location = new System.Drawing.Point(149, 0);
+            this.txtEditLazy.Location = new System.Drawing.Point(116, 0);
             this.txtEditLazy.Name = "txtEditLazy";
             this.txtEditLazy.Size = new System.Drawing.Size(28, 21);
             this.txtEditLazy.TabIndex = 1;
             this.txtEditLazy.Text = "5";
+            this.txtEditLazy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtEditPomo
             // 
             this.txtEditPomo.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEditPomo.Location = new System.Drawing.Point(51, 0);
+            this.txtEditPomo.Location = new System.Drawing.Point(46, 0);
             this.txtEditPomo.Name = "txtEditPomo";
             this.txtEditPomo.Size = new System.Drawing.Size(28, 21);
             this.txtEditPomo.TabIndex = 0;
             this.txtEditPomo.Text = "2";
+            this.txtEditPomo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnAbout
             // 
@@ -352,7 +351,7 @@
             this.btnStartPause.Name = "btnStartPause";
             this.btnStartPause.Size = new System.Drawing.Size(50, 50);
             this.btnStartPause.TabIndex = 3;
-            this.btnStartPause.Text = "NoText";
+            this.btnStartPause.Text = "Start";
             this.btnStartPause.UseVisualStyleBackColor = false;
             this.btnStartPause.Click += new System.EventHandler(this.btnStartPause_Click);
             // 
@@ -368,17 +367,16 @@
             // 
             // tmPomo
             // 
-            this.tmPomo.Interval = 1000;
             this.tmPomo.Tick += new System.EventHandler(this.tmPomo_Tick);
             // 
             // tmLazy
             // 
-            this.tmLazy.Interval = 1000;
             this.tmLazy.Tick += new System.EventHandler(this.tmLazy_Tick);
             // 
             // tmLazyTotal
             // 
             this.tmLazyTotal.Enabled = true;
+            this.tmLazyTotal.Interval = 1000;
             this.tmLazyTotal.Tick += new System.EventHandler(this.tmLazyTotal_Tick);
             // 
             // tmPomoTotal
@@ -397,6 +395,28 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnSaveSettings
+            // 
+            this.btnSaveSettings.BackColor = System.Drawing.Color.DarkGray;
+            this.btnSaveSettings.FlatAppearance.BorderSize = 0;
+            this.btnSaveSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveSettings.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnSaveSettings.Location = new System.Drawing.Point(153, -4);
+            this.btnSaveSettings.Name = "btnSaveSettings";
+            this.btnSaveSettings.Size = new System.Drawing.Size(47, 27);
+            this.btnSaveSettings.TabIndex = 4;
+            this.btnSaveSettings.Text = " Save";
+            this.btnSaveSettings.UseVisualStyleBackColor = false;
+            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
+            // 
+            // pbProgressbar
+            // 
+            this.pbProgressbar.Location = new System.Drawing.Point(1, 1);
+            this.pbProgressbar.Margin = new System.Windows.Forms.Padding(30);
+            this.pbProgressbar.Name = "pbProgressbar";
+            this.pbProgressbar.Size = new System.Drawing.Size(195, 195);
+            this.pbProgressbar.TabIndex = 2;
             // 
             // Form1
             // 
@@ -459,6 +479,7 @@
         private System.Windows.Forms.RichTextBox rtxtSave;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnSaveSettings;
     }
 }
 

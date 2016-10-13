@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using LazyPomo.Properties;
 
 //using LazyPomo.Code;
 
@@ -34,8 +35,7 @@ namespace LazyPomo
 
         int hourPomoTotal;
         int minPomoTotal;
-        int secPomoTotal;
-
+        int secPomoTotal = 1;
         int mouseX = 0;
         int mouseY = 0;
         bool mouseDown;
@@ -45,7 +45,7 @@ namespace LazyPomo
         public Form1()
         {
             InitializeComponent();
-            timerMin = int.Parse(txtEditPomo.Text);
+            //timerMin = int.Parse(txtEditPomo.Text);
             timerSec = 00;
             timeDivider = 360 / ((double)timerMin * 60);
             timeTicker = 0;
@@ -53,6 +53,20 @@ namespace LazyPomo
             timeRef = timerMin * 60;
             rtxtSave.Visible = false;
             pnlEditTimebox.Visible = false;
+
+            this.txtEditPomo.Text = Settings.Default["Pomo"].ToString();
+            this.txtEditLazy.Text = Settings.Default["Lazy"].ToString();
+            this.timerMin = int.Parse(Settings.Default["PomoInt"].ToString());
+
+            int checkZero = int.Parse(txtEditPomo.Text);
+            if (checkZero < 10)
+            {
+                lblCountdownMin.Text = "0" + txtEditPomo.Text;
+            }
+            else
+            {
+                lblCountdownMin.Text = txtEditPomo.Text;
+            }
         }
 
         // Movable and Closable Window START
@@ -159,7 +173,7 @@ namespace LazyPomo
 
             if (timeTicker == timeRef)
              {
-                timerMin = int.Parse(txtEditPomo.Text);
+                timerMin = int.Parse(Settings.Default["PomoInt"].ToString());
                 timerSec = 00;
                 timeDivider = 360 / ((double)timerMin * 60);
                 timeTicker = 0;
@@ -175,6 +189,7 @@ namespace LazyPomo
             timerSec = 00;
             timeDivider = 360 / ((double)timerMin * 60);
             timeTicker = 0;
+            timeRef = timerMin * 60;
 
             tmLazy.Enabled = true;
             tmLazyTotal.Enabled = true;
@@ -191,6 +206,7 @@ namespace LazyPomo
             tmLazyTotal.Enabled = true;
             tmPomo.Enabled = false;
             tmPomoTotal.Enabled = false;
+            
             pausePomo = true;
             btnStartPause.Text = "Go on";
         }
@@ -204,9 +220,13 @@ namespace LazyPomo
             {
                 Pomo();
             }
-            else if (pausePomo && lazy)
+            else if (lazy)
             {
                 timerMin = int.Parse(txtEditPomo.Text);
+                timerSec = 00;
+                timeDivider = 360 / ((double)timerMin * 60);
+                timeTicker = 0;
+                timeRef = timerMin * 60;
                 Pomo();
             }
             else
@@ -309,10 +329,10 @@ namespace LazyPomo
             lblCountDownDivider.ForeColor = Color.LimeGreen;
 
             if (timeTicker == timeRef)
-            {
+            {               
+                tmPomo.Enabled = false;
                 lblCountdownMin.Text = "00";
                 lblCountdownSec.Text = "00";
-                tmPomo.Enabled = false;
                 counter = counter + 1;
                 lblPomoCount.Text = counter.ToString() + " Pomo Sessions";
                 DialogResult resultPomoOver = MessageBox.Show("Well done! Now take a break.\n Or press 'No' to start another Pomo Session",
@@ -321,7 +341,9 @@ namespace LazyPomo
                     MessageBoxIcon.Exclamation);
                 if (resultPomoOver == DialogResult.Yes)
                 {
+
                     Lazy();
+                    
                     /*timeTicker = 0;
                     timerMin = int.Parse(txtEditLazy.Text);
                     double temp = 100 / ((double)timerMin * 60);
@@ -361,10 +383,11 @@ namespace LazyPomo
 
         // START LAZY TICK
         private void tmLazy_Tick(object sender, EventArgs e)
-        {     
+        {
+            timeTicker++;
             progressbarColor = Color.Red;
             pbProgressbar.UpdateProgress(timeTicker, timeDivider, progressbarColor);
-            timeTicker++;
+            
             lblCountdownMin.ForeColor = Color.Red;
             lblCountdownSec.ForeColor = Color.Red;
             lblCountDownDivider.ForeColor = Color.Red;
@@ -399,7 +422,10 @@ namespace LazyPomo
                 }
                 
             }
-
+            if (!pausePomo && lazy)
+            {
+               
+            }
             if (timerSec == 00)
             {
                 timerMin--;
@@ -410,7 +436,7 @@ namespace LazyPomo
             else
             {
                 timerSec--;
-            }            
+            }
             UpdateCountDownLabel();
         }
         // END LAZY TICK
@@ -423,28 +449,16 @@ namespace LazyPomo
 
 
         // START Total Time
-        private void tmLazyTotal_Tick(object sender, EventArgs e)
+        private void UpdateZerosLazy()
         {
             string lazyHourTotal;
             string lazyMinTotal = minLazyTotal.ToString();
             string lazySecTotal = secLazyTotal.ToString();
-            secLazyTotal++;
-            if (secLazyTotal == 60)
-            {
-                secLazyTotal = 0;
-                minLazyTotal++;
 
-                if (minLazyTotal == 60)
-                {
-                    minLazyTotal = 0;
-                    hourLazyTotal++;
-                }
-                
-            }
 
-            if (hourLazyTotal <10 )
+            if (hourLazyTotal < 10)
             {
-                 lazyHourTotal = "0" + hourLazyTotal.ToString();
+                lazyHourTotal = "0" + hourLazyTotal.ToString();
             }
             else
             {
@@ -467,27 +481,30 @@ namespace LazyPomo
                 lazySecTotal = secLazyTotal.ToString();
             }
             lblLazyTotal.Text = lazyHourTotal + ":" + lazyMinTotal + ":" + lazySecTotal;
-            
         }
-
-        private void tmPomoTotal_Tick(object sender, EventArgs e)
+        private void tmLazyTotal_Tick(object sender, EventArgs e)
         {
-            string pomoHourTotal;
-            string pomoMinTotal = minPomoTotal.ToString();
-            string pomoSecTotal = secPomoTotal.ToString();
-            secPomoTotal++;
-            if (secPomoTotal == 60)
+            UpdateZerosLazy();
+            secLazyTotal++;
+            if (secLazyTotal == 60)
             {
-                secPomoTotal = 0;
-                minPomoTotal++;
+                secLazyTotal = 0;
+                minLazyTotal++;
 
-                if (minPomoTotal == 60)
+                if (minLazyTotal == 60)
                 {
-                    minPomoTotal = 0;
+                    minLazyTotal = 0;
                     hourLazyTotal++;
                 }
 
             }
+        }
+
+        private void UpdateZerosPomo()
+        {
+            string pomoHourTotal;
+            string pomoMinTotal = minPomoTotal.ToString();
+            string pomoSecTotal = secPomoTotal.ToString();
 
             if (hourLazyTotal < 10)
             {
@@ -516,15 +533,30 @@ namespace LazyPomo
             lblPomoTotal.Text = pomoHourTotal + ":" + pomoMinTotal + ":" + pomoSecTotal;
 
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void tmPomoTotal_Tick(object sender, EventArgs e)
         {
+            UpdateZerosPomo();
+           
+            secPomoTotal++;
+            if (secPomoTotal == 60)
+            {
+                secPomoTotal = 0;
+                minPomoTotal++;
+
+                if (minPomoTotal == 60)
+                {
+                    minPomoTotal = 0;
+                    hourLazyTotal++;
+                }
+
+            }
 
         }
 
+
         // END Total Time
 
-        //Start Always on Top 
+        //Start Always on Top
         private void btnPin_Click(object sender, EventArgs e)
         {
             if (checkTop == false)
@@ -538,9 +570,9 @@ namespace LazyPomo
                 checkTop = false;
             }
         }
-
-
         //End Always on Top
+
+
 
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -573,39 +605,17 @@ namespace LazyPomo
                 int.TryParse(savedPomoCountNumber, out counter);
                 lblPomoCount.Text = counter.ToString() + " Pomo Sessions";
                 //get Pomo Time
-                /*
+           
                 string savedPomoTime = savedPomo.Substring(savedPomo.IndexOf('\n') + 1, savedPomo.LastIndexOf('\n') - savedPomo.IndexOf('\n'));
                 string savedPomoTimeNumbers = savedPomoTime.Substring(savedPomoTime.LastIndexOf(' ') + 1, savedPomoTime.Length - savedPomoTime.LastIndexOf(' ') - 1);
                 string savedPomoTimeHour = savedPomoTimeNumbers.Substring(0, savedPomoTimeNumbers.IndexOf(':'));//get hours
                 string savedPomoTimeMinutes = savedPomoTimeNumbers.Substring(savedPomoTimeNumbers.IndexOf(':') + 1, savedPomoTimeNumbers.LastIndexOf(':') - savedPomoTimeNumbers.IndexOf(':') - 1);//get minutes
                 string savedPomoTimeSeconds = savedPomoTimeNumbers.Substring(savedPomoTimeNumbers.LastIndexOf(':') + 1, savedPomoTimeNumbers.Length - savedPomoTimeNumbers.LastIndexOf(':') - 1);
-                int.TryParse(savedPomoTimeHour, out h);
-                int.TryParse(savedPomoTimeMinutes, out m);
-                int.TryParse(savedPomoTimeSeconds, out s);
-                if (s < 10)
-                {
-
-                    if (m < 10)
-                    {
-                        lblPomoTotal.Text = "Total Pomo Time  " + h + ":0" + m + ":0" + s;
-                    }
-                    else
-                    {
-                        lblPomoTotal.Text = "Total Pomo Time  " + h + ":" + m + ":0" + s;
-                    }
-                }
-
-                else
-                {
-                    if (m < 10)
-                    {
-                        lblPomoTimeAll.Text = "Total Pomo Time  " + h + ":0" + m + ":" + s;
-                    }
-                    else
-                    {
-                        lblPomoTimeAll.Text = "Total Pomo Time  " + h + ":" + m + ":" + s;
-                    }
-                }
+                int.TryParse(savedPomoTimeHour, out hourPomoTotal);
+                int.TryParse(savedPomoTimeMinutes, out minPomoTotal);
+                int.TryParse(savedPomoTimeSeconds, out secPomoTotal);
+                UpdateZerosPomo();
+                
 
                 //get Lazy Time
                 string savedLazyTime = savedPomo.Substring(savedPomo.LastIndexOf('\n') + 1, savedPomo.Length - savedPomo.LastIndexOf('\n') - 1);
@@ -613,35 +623,28 @@ namespace LazyPomo
                 string savedLazyTimeHour = savedLazyTimeNumbers.Substring(0, savedLazyTimeNumbers.IndexOf(':'));//get hours
                 string savedLazyTimeMinutes = savedLazyTimeNumbers.Substring(savedLazyTimeNumbers.IndexOf(':') + 1, savedLazyTimeNumbers.LastIndexOf(':') - savedLazyTimeNumbers.IndexOf(':') - 1);//get minutes
                 string savedLazyTimeSeconds = savedLazyTimeNumbers.Substring(savedLazyTimeNumbers.LastIndexOf(':') + 1, savedLazyTimeNumbers.Length - savedLazyTimeNumbers.LastIndexOf(':') - 1);
-                int.TryParse(savedLazyTimeHour, out hL_a);
-                int.TryParse(savedLazyTimeMinutes, out mL_a);
-                int.TryParse(savedLazyTimeSeconds, out sL_a);
-                if (sL_a < 10)
-                {
-                    if (mL_a < 10)
-                    {
-                        lblLazyTimeAll.Text = "Total Lazy Time  " + hL_a + ":0" + mL_a + ":0" + sL_a;
-                    }
-                    else
-                    {
-                        lblLazyTimeAll.Text = "Total Lazy Time  " + hL_a + ":" + mL_a + ":0" + sL_a;
-                    }
-                }
+                int.TryParse(savedLazyTimeHour, out hourLazyTotal);
+                int.TryParse(savedLazyTimeMinutes, out minLazyTotal);
+                int.TryParse(savedLazyTimeSeconds, out secLazyTotal);
+                UpdateZerosLazy();
 
-                else
-                {
-                    if (mL_a < 10)
-                    {
-                        lblLazyTimeAll.Text = "Total Lazy Time  " + hL_a + ":0" + mL_a + ":" + sL_a;
-                    }
-                    else
-                    {
-                        lblLazyTimeAll.Text = "Total Lazy Time  " + hL_a + ":" + mL_a + ":" + sL_a;
-                    }
-                }
-                */
                 MessageBox.Show("Save File Loaded", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            
+        }
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
+        {            
+            Settings.Default["Pomo"] = txtEditPomo.Text;
+            Settings.Default["Lazy"] = txtEditLazy.Text;
+            Settings.Default["PomoInt"] = int.Parse(txtEditPomo.Text);
+            Settings.Default["LazyInt"] = int.Parse(txtEditLazy.Text);
+            Settings.Default.Save();
         }
     }
 }
