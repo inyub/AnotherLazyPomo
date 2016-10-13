@@ -472,8 +472,49 @@ namespace LazyPomo
 
         private void tmPomoTotal_Tick(object sender, EventArgs e)
         {
+            string pomoHourTotal;
+            string pomoMinTotal = minPomoTotal.ToString();
+            string pomoSecTotal = secPomoTotal.ToString();
             secPomoTotal++;
-            lblPomoTotal.Text = "tick " + secPomoTotal;
+            if (secPomoTotal == 60)
+            {
+                secPomoTotal = 0;
+                minPomoTotal++;
+
+                if (minPomoTotal == 60)
+                {
+                    minPomoTotal = 0;
+                    hourLazyTotal++;
+                }
+
+            }
+
+            if (hourLazyTotal < 10)
+            {
+                pomoHourTotal = "0" + hourPomoTotal.ToString();
+            }
+            else
+            {
+                pomoHourTotal = hourLazyTotal.ToString();
+            }
+            if (minPomoTotal < 10)
+            {
+                pomoMinTotal = "0" + minPomoTotal.ToString();
+            }
+            else
+            {
+                pomoMinTotal = minPomoTotal.ToString();
+            }
+            if (secPomoTotal < 10)
+            {
+                pomoSecTotal = "0" + secPomoTotal.ToString();
+            }
+            else
+            {
+                pomoSecTotal = secPomoTotal.ToString();
+            }
+            lblPomoTotal.Text = pomoHourTotal + ":" + pomoMinTotal + ":" + pomoSecTotal;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)

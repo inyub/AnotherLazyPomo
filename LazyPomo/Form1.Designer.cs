@@ -40,6 +40,7 @@
             this.lblCountdownMin = new System.Windows.Forms.Label();
             this.btnPin = new System.Windows.Forms.Button();
             this.btnSound = new System.Windows.Forms.Button();
+            this.pbProgressbar = new LazyPomo.Code.CircularProgressbar();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@
             this.rtxtSave = new System.Windows.Forms.RichTextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pbProgressbar = new LazyPomo.Code.CircularProgressbar();
             this.pnlMain.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.pnlTimer.SuspendLayout();
@@ -190,6 +190,14 @@
             this.btnSound.TabIndex = 0;
             this.btnSound.Text = "Sound";
             this.btnSound.UseVisualStyleBackColor = true;
+            // 
+            // pbProgressbar
+            // 
+            this.pbProgressbar.Location = new System.Drawing.Point(0, 0);
+            this.pbProgressbar.Margin = new System.Windows.Forms.Padding(30);
+            this.pbProgressbar.Name = "pbProgressbar";
+            this.pbProgressbar.Size = new System.Drawing.Size(195, 195);
+            this.pbProgressbar.TabIndex = 2;
             // 
             // pnlMenu
             // 
@@ -360,6 +368,7 @@
             // 
             // tmPomo
             // 
+            this.tmPomo.Interval = 1000;
             this.tmPomo.Tick += new System.EventHandler(this.tmPomo_Tick);
             // 
             // tmLazy
@@ -388,14 +397,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // pbProgressbar
-            // 
-            this.pbProgressbar.Location = new System.Drawing.Point(0, 0);
-            this.pbProgressbar.Margin = new System.Windows.Forms.Padding(30);
-            this.pbProgressbar.Name = "pbProgressbar";
-            this.pbProgressbar.Size = new System.Drawing.Size(195, 195);
-            this.pbProgressbar.TabIndex = 2;
             // 
             // Form1
             // 
