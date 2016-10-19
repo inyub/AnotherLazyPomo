@@ -16,8 +16,9 @@ namespace LazyPomo
 {
     public partial class Form1 : Form
     {
-
+        int slideMenu = 20;
         int slideDown = 20;
+        bool editButton;
         int timeTicker = 0;
         double timeDivider = 0.0666;
         Color progressbarColor;
@@ -40,6 +41,7 @@ namespace LazyPomo
         int mouseY = 0;
         bool mouseDown;
         bool checkTop = false;
+        bool checkSound = true;
 
 
         public Form1()
@@ -107,60 +109,97 @@ namespace LazyPomo
 
         // Menu Slide START
         private void btnMain_Click(object sender, EventArgs e)
-        {
-           
-            if (slideDown == 20 || slideDown < 20)
+        {          
+            if (slideMenu == 20) // Open Main 
             {
+                slideMenu = 42;
                 pnlEditTimebox.Visible = false;
-                this.tmMenuDown.Enabled = true;                
+                this.tmMenuDown.Enabled = true;
+                editButton = false;
             }
-            else if (slideDown > 20 && pnlEditTimebox.Visible == true)
+            else if (slideMenu == 80) //change
             {
+                slideMenu = 42;
                 pnlEditTimebox.Visible = false;
-            }
-            else
-            {
                 this.tmMenuUp.Enabled = true;
-            }      
+                editButton = false;
+            }
+            else if (slideMenu == 42) //close
+            {
+                slideMenu = 20;
+                this.tmMenuUp.Enabled = true;
+                editButton = false;
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {            
+            if (slideMenu == 20) // Open Edit 
+            {
+                slideMenu = 80;
+                pnlEditTimebox.Visible = true;
+                this.tmMenuDown.Enabled = true;
+                editButton = true;
+            }
+            else if (slideMenu == 42) //change
+            {
+                slideMenu = 80;
+                pnlEditTimebox.Visible = true;
+                this.tmMenuDown.Enabled = true;
+                editButton = false;
+            }
+            else if (slideMenu == 80) //close
+            {
+                slideMenu = 20;
+                this.tmMenuUp.Enabled = true;
+                editButton = true;
+            }
         }
 
         private void tmControl_Tick(object sender, EventArgs e)
         {
-            if (slideDown == 40 )
+            if (slideDown < slideMenu)
             {
-                this.tmMenuDown.Enabled = false;
-            }
-            slideDown++;
+                if (editButton == true)
+                {
+                    slideDown = slideDown + 4;
+                }
+                else 
+                {
+                    slideDown = slideDown + 2;
+                }
+                
+                if (slideDown == slideMenu)
+                {
+                    this.tmMenuDown.Enabled = false;
+                }
+            }          
             this.pnlTimer.Location = new System.Drawing.Point(0, slideDown);
+            this.pnlMenuGradient.Location = new System.Drawing.Point(0, (slideDown - 5));
         }
 
         private void tmMenuUp_Tick(object sender, EventArgs e)
         {
-            if (slideDown <= 21 )
+            if (slideDown > slideMenu)
             {
-                this.tmMenuUp.Enabled = false;
-                pnlEditTimebox.Visible = false;
+                if (editButton == true)
+                {
+                    slideDown = slideDown - 4;
+                }
+                else
+                {
+                    slideDown = slideDown - 2;
+                }
+                if (slideDown == slideMenu)
+                {
+                    this.tmMenuUp.Enabled = false;
+                }
             }
-            slideDown--;
             this.pnlTimer.Location = new System.Drawing.Point(0, slideDown);
+            this.pnlMenuGradient.Location = new System.Drawing.Point(0, (slideDown - 5));
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (slideDown == 20 || slideDown < 20)
-            {
-                pnlEditTimebox.Visible = true;
-                this.tmMenuDown.Enabled = true;
-            }
-            else if (slideDown > 20 && pnlEditTimebox.Visible == false)
-            {
-                pnlEditTimebox.Visible = true;
-            }
-            else
-            {
-                this.tmMenuUp.Enabled = true;                              
-            }
-        }
+
 
         // Menu Slide END
 
@@ -206,7 +245,14 @@ namespace LazyPomo
             tmLazyTotal.Enabled = true;
             tmPomo.Enabled = false;
             tmPomoTotal.Enabled = false;
-            
+
+            progressbarColor = Color.Gray;
+            pbProgressbar.UpdateProgress(timeTicker, timeDivider, progressbarColor);
+
+            lblCountdownMin.ForeColor = Color.Gray;
+            lblCountdownSec.ForeColor = Color.Gray;
+            lblCountDownDivider.ForeColor = Color.Gray;
+
             pausePomo = true;
             btnStartPause.Text = "Go on";
         }
@@ -559,15 +605,18 @@ namespace LazyPomo
         //Start Always on Top
         private void btnPin_Click(object sender, EventArgs e)
         {
+           
             if (checkTop == false)
             {
                 this.TopMost = true;
                 checkTop = true;
+                this.btnPin.BackgroundImage = global::LazyPomo.Properties.Resources.pinOn;
             }
             else
             {
                 this.TopMost = false;
                 checkTop = false;
+                this.btnPin.BackgroundImage = global::LazyPomo.Properties.Resources.pinOff1;
             }
         }
         //End Always on Top
@@ -634,8 +683,9 @@ namespace LazyPomo
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           // this.btnStartPause.Parent = pnlFooter;
+            //btnStartPause.BackColor = Color.Transparent;
 
-            
         }
 
         private void btnSaveSettings_Click(object sender, EventArgs e)
@@ -645,6 +695,86 @@ namespace LazyPomo
             Settings.Default["PomoInt"] = int.Parse(txtEditPomo.Text);
             Settings.Default["LazyInt"] = int.Parse(txtEditLazy.Text);
             Settings.Default.Save();
+        }
+
+        private void btnOpen_MouseHover(object sender, EventArgs e)
+        {
+            this.btnOpen.ForeColor = System.Drawing.SystemColors.Control;
+        }
+
+        private void btnOpen_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnOpen.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+        }
+
+        private void btnSave_MouseHover(object sender, EventArgs e)
+        {
+            this.btnSave.ForeColor = System.Drawing.SystemColors.Control;
+        }
+
+        private void btnSave_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnSave.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+        }
+
+        private void btnAbout_MouseHover(object sender, EventArgs e)
+        {
+            this.btnAbout.ForeColor = System.Drawing.SystemColors.Control;
+        }
+
+        private void btnAbout_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnAbout.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+        }
+
+        private void btnPin_MouseHover(object sender, EventArgs e)
+        {
+           
+                this.btnPin.BackgroundImage = global::LazyPomo.Properties.Resources.pinHover;
+         
+        }
+
+        private void btnPin_MouseLeave(object sender, EventArgs e)
+        {
+            if (checkTop == false)
+            {
+                this.btnPin.BackgroundImage = global::LazyPomo.Properties.Resources.pinOff1;
+            }
+            else
+            {
+                this.btnPin.BackgroundImage = global::LazyPomo.Properties.Resources.pinOn;
+            }
+        }
+
+        private void btnSound_Click(object sender, EventArgs e)
+        {
+            if (checkSound == false)
+            {
+                checkSound = true;
+                this.btnSound.BackgroundImage = global::LazyPomo.Properties.Resources.soundOn;
+            }
+            else
+            {
+                checkSound = false;
+                this.btnSound.BackgroundImage = global::LazyPomo.Properties.Resources.soundOff;
+            }
+        }
+
+        private void btnSound_MouseHover(object sender, EventArgs e)
+        {
+            this.btnSound.BackgroundImage = global::LazyPomo.Properties.Resources.soundHover;
+        }
+
+        private void btnSound_MouseLeave(object sender, EventArgs e)
+        {
+            if (checkSound == false)
+            {
+                this.btnSound.BackgroundImage = global::LazyPomo.Properties.Resources.soundOff;
+            }
+            else
+            {
+                this.btnSound.BackgroundImage = global::LazyPomo.Properties.Resources.soundOn;
+            }
         }
     }
 }

@@ -49,11 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\CirclePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Code\CircularProgressbar.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Code\CircularProgressbar.Designer.cs">
       <DependentUpon>CircularProgressbar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Code\myButtonObject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Code\myButtonObject.Designer.cs">
+      <DependentUpon>myButtonObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Code\RoundButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -93,6 +105,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pinOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pinOff1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pinHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\soundHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\soundOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\soundOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pomoPause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pomoStart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gradient.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

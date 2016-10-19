@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pnlMenuGradient.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAB2SURBVChTjYyxEcQgEAOpxBQEPT3JnwoyBeFK8Aq/
+        M4IPNJL2bpTmnH9pC3fawp1ShHJEHCh/0c/pWv1hyolQpKghVXLl0bngxd13ZxajUT6v6HazxUPRWGxe
+        PFk8eejA7o7TZbYE63680AAMHpCGyGb2p+u6AeA6wRUXYZUGAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="tmMenuDown.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
