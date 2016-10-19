@@ -50,10 +50,10 @@ namespace LazyPomo.Code
             e.Graphics.DrawPie(obj_pen, rect1, 0, 360);
             e.Graphics.FillPie(new SolidBrush(System.Drawing.Color.LightGray), rect1, 0, 360);
 
-            obj_pen = new Pen(System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224))))));
+            obj_pen = new Pen(Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232))))));
             rect1 = new Rectangle(0 - this.Width / 2 + 35, 0 - this.Height / 2 + 35, this.Width - 70, this.Height - 70);
             e.Graphics.DrawPie(obj_pen, rect1, 0, 360);
-            e.Graphics.FillPie(new SolidBrush(System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))))), rect1, 0, 360);
+            e.Graphics.FillPie(new SolidBrush(Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))))), rect1, 0, 360);
 
             
             e.Graphics.RotateTransform(90);

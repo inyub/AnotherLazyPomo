@@ -176,6 +176,7 @@ namespace LazyPomo
             }          
             this.pnlTimer.Location = new System.Drawing.Point(0, slideDown);
             this.pnlMenuGradient.Location = new System.Drawing.Point(0, (slideDown - 5));
+            
         }
 
         private void tmMenuUp_Tick(object sender, EventArgs e)
@@ -220,7 +221,8 @@ namespace LazyPomo
             }
             lazy = false;
             pausePomo = false;
-            btnStartPause.Text = "Pause";
+            
+            this.btnStartPauseRound.BackgroundImage = global::LazyPomo.Properties.Resources.pomoPause;
         }
         private void Lazy()
         {
@@ -237,7 +239,8 @@ namespace LazyPomo
 
             lazy = true;
             pausePomo = true;
-            btnStartPause.Text = "Start";
+            
+            this.btnStartPauseRound.BackgroundImage = global::LazyPomo.Properties.Resources.pomoStart;
         }
         private void Pause()
         {
@@ -254,7 +257,8 @@ namespace LazyPomo
             lblCountDownDivider.ForeColor = Color.Gray;
 
             pausePomo = true;
-            btnStartPause.Text = "Go on";
+            
+            this.btnStartPauseRound.BackgroundImage = global::LazyPomo.Properties.Resources.pomoStart;
         }
 
         // InterAction
@@ -683,8 +687,7 @@ namespace LazyPomo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           // this.btnStartPause.Parent = pnlFooter;
-            //btnStartPause.BackColor = Color.Transparent;
+            
 
         }
 
@@ -774,6 +777,28 @@ namespace LazyPomo
             else
             {
                 this.btnSound.BackgroundImage = global::LazyPomo.Properties.Resources.soundOn;
+            }
+        }
+
+        private void btnStartPauseRound_Click(object sender, EventArgs e)
+        {
+
+            if (pausePomo && !lazy)
+            {
+                Pomo();
+            }
+            else if (lazy)
+            {
+                timerMin = int.Parse(txtEditPomo.Text);
+                timerSec = 00;
+                timeDivider = 360 / ((double)timerMin * 60);
+                timeTicker = 0;
+                timeRef = timerMin * 60;
+                Pomo();
+            }
+            else
+            {
+                Pause();
             }
         }
     }

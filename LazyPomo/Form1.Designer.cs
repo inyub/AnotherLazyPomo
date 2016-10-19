@@ -62,16 +62,12 @@
             this.rtxtSave = new System.Windows.Forms.RichTextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.roundButton1 = new RoundButton();
-            this.pbProgressbar = new LazyPomo.Code.CircularProgressbar();
-            this.circlePanel1 = new CirclePanel();
-            this.myButtonObject1 = new LazyPomo.Code.myButtonObject();
-            this.btnStartPauseRound = new RoundButton();
-            this.btnStartPause = new System.Windows.Forms.Button();
             this.btnPin = new System.Windows.Forms.Button();
             this.btnSound = new System.Windows.Forms.Button();
             this.pnlMenuGradient = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlSlideGradient = new System.Windows.Forms.Panel();
+            this.btnStartPauseRound = new RoundButton();
+            this.pbProgressbar = new LazyPomo.Code.CircularProgressbar();
             this.pnlMain.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.pnlMenu.SuspendLayout();
@@ -83,6 +79,7 @@
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.ControlDark;
             this.pnlMain.Controls.Add(this.pnlFooter);
+            this.pnlMain.Controls.Add(this.pnlSlideGradient);
             this.pnlMain.Controls.Add(this.pnlMenu);
             this.pnlMain.Controls.Add(this.pnlTimer);
             this.pnlMain.Controls.Add(this.pnlMenuGradient);
@@ -92,7 +89,7 @@
             this.pnlMain.Controls.Add(this.btnSave);
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(200, 240);
+            this.pnlMain.Size = new System.Drawing.Size(200, 255);
             this.pnlMain.TabIndex = 0;
             // 
             // pnlFooter
@@ -102,7 +99,7 @@
             this.pnlFooter.Controls.Add(this.lblLazyTotal);
             this.pnlFooter.Location = new System.Drawing.Point(0, 220);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(200, 20);
+            this.pnlFooter.Size = new System.Drawing.Size(200, 35);
             this.pnlFooter.TabIndex = 2;
             // 
             // lblPomoTotal
@@ -110,7 +107,7 @@
             this.lblPomoTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
             this.lblPomoTotal.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPomoTotal.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.lblPomoTotal.Location = new System.Drawing.Point(130, 4);
+            this.lblPomoTotal.Location = new System.Drawing.Point(124, 9);
             this.lblPomoTotal.Name = "lblPomoTotal";
             this.lblPomoTotal.Size = new System.Drawing.Size(70, 20);
             this.lblPomoTotal.TabIndex = 1;
@@ -121,7 +118,7 @@
             this.lblLazyTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
             this.lblLazyTotal.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLazyTotal.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblLazyTotal.Location = new System.Drawing.Point(3, 4);
+            this.lblLazyTotal.Location = new System.Drawing.Point(9, 9);
             this.lblLazyTotal.Name = "lblLazyTotal";
             this.lblLazyTotal.Size = new System.Drawing.Size(65, 20);
             this.lblLazyTotal.TabIndex = 0;
@@ -129,7 +126,7 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.BackColor = System.Drawing.Color.Silver;
+            this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
             this.pnlMenu.Controls.Add(this.btnClose);
             this.pnlMenu.Controls.Add(this.btnEdit);
             this.pnlMenu.Controls.Add(this.btnMain);
@@ -143,6 +140,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -153,11 +151,12 @@
             this.btnClose.TabIndex = 2;
             this.btnClose.TabStop = false;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnEdit
             // 
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -168,11 +167,12 @@
             this.btnEdit.TabIndex = 1;
             this.btnEdit.TabStop = false;
             this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnMain
             // 
+            this.btnMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
             this.btnMain.FlatAppearance.BorderSize = 0;
             this.btnMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMain.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -183,12 +183,12 @@
             this.btnMain.TabIndex = 0;
             this.btnMain.TabStop = false;
             this.btnMain.Text = "Main";
-            this.btnMain.UseVisualStyleBackColor = true;
+            this.btnMain.UseVisualStyleBackColor = false;
             this.btnMain.Click += new System.EventHandler(this.btnMain_Click);
             // 
             // pnlTimer
             // 
-            this.pnlTimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pnlTimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.pnlTimer.Controls.Add(this.button1);
             this.pnlTimer.Controls.Add(this.lblPomoCount);
             this.pnlTimer.Controls.Add(this.lblCountDownDivider);
@@ -204,7 +204,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(164, 161);
+            this.button1.Location = new System.Drawing.Point(172, 169);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(22, 23);
             this.button1.TabIndex = 7;
@@ -213,6 +213,7 @@
             // 
             // lblPomoCount
             // 
+            this.lblPomoCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.lblPomoCount.Location = new System.Drawing.Point(46, 69);
             this.lblPomoCount.Name = "lblPomoCount";
             this.lblPomoCount.Size = new System.Drawing.Size(108, 19);
@@ -222,7 +223,7 @@
             // 
             // lblCountDownDivider
             // 
-            this.lblCountDownDivider.BackColor = System.Drawing.Color.Transparent;
+            this.lblCountDownDivider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.lblCountDownDivider.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCountDownDivider.ForeColor = System.Drawing.Color.LimeGreen;
             this.lblCountDownDivider.Location = new System.Drawing.Point(93, 74);
@@ -234,7 +235,7 @@
             // 
             // lblCountdownSec
             // 
-            this.lblCountdownSec.BackColor = System.Drawing.Color.Transparent;
+            this.lblCountdownSec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.lblCountdownSec.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCountdownSec.ForeColor = System.Drawing.Color.LimeGreen;
             this.lblCountdownSec.Location = new System.Drawing.Point(102, 85);
@@ -246,7 +247,7 @@
             // 
             // lblCountdownMin
             // 
-            this.lblCountdownMin.BackColor = System.Drawing.Color.Transparent;
+            this.lblCountdownMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.lblCountdownMin.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCountdownMin.ForeColor = System.Drawing.Color.LimeGreen;
             this.lblCountdownMin.Location = new System.Drawing.Point(46, 85);
@@ -440,82 +441,15 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // roundButton1
-            // 
-            this.roundButton1.BackColor = System.Drawing.Color.Transparent;
-            this.roundButton1.Location = new System.Drawing.Point(280, 74);
-            this.roundButton1.Name = "roundButton1";
-            this.roundButton1.Size = new System.Drawing.Size(75, 67);
-            this.roundButton1.TabIndex = 6;
-            this.roundButton1.Text = "roundButton1";
-            this.roundButton1.UseVisualStyleBackColor = true;
-            // 
-            // pbProgressbar
-            // 
-            this.pbProgressbar.Location = new System.Drawing.Point(2, 3);
-            this.pbProgressbar.Margin = new System.Windows.Forms.Padding(30);
-            this.pbProgressbar.Name = "pbProgressbar";
-            this.pbProgressbar.Size = new System.Drawing.Size(195, 195);
-            this.pbProgressbar.TabIndex = 2;
-            // 
-            // circlePanel1
-            // 
-            this.circlePanel1.BackColor = System.Drawing.Color.Transparent;
-            this.circlePanel1.BackgroundImage = global::LazyPomo.Properties.Resources.pomoStart;
-            this.circlePanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.circlePanel1.Location = new System.Drawing.Point(223, 48);
-            this.circlePanel1.Name = "circlePanel1";
-            this.circlePanel1.Size = new System.Drawing.Size(132, 135);
-            this.circlePanel1.TabIndex = 7;
-            // 
-            // myButtonObject1
-            // 
-            this.myButtonObject1.BackgroundImage = global::LazyPomo.Properties.Resources.pomoStart;
-            this.myButtonObject1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.myButtonObject1.Location = new System.Drawing.Point(320, 151);
-            this.myButtonObject1.Name = "myButtonObject1";
-            this.myButtonObject1.Size = new System.Drawing.Size(54, 56);
-            this.myButtonObject1.TabIndex = 5;
-            // 
-            // btnStartPauseRound
-            // 
-            this.btnStartPauseRound.BackColor = System.Drawing.Color.Transparent;
-            this.btnStartPauseRound.BackgroundImage = global::LazyPomo.Properties.Resources.pomoStart;
-            this.btnStartPauseRound.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnStartPauseRound.FlatAppearance.BorderSize = 2;
-            this.btnStartPauseRound.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStartPauseRound.Location = new System.Drawing.Point(75, 205);
-            this.btnStartPauseRound.Name = "btnStartPauseRound";
-            this.btnStartPauseRound.Size = new System.Drawing.Size(50, 50);
-            this.btnStartPauseRound.TabIndex = 2;
-            this.btnStartPauseRound.UseVisualStyleBackColor = false;
-            // 
-            // btnStartPause
-            // 
-            this.btnStartPause.BackColor = System.Drawing.Color.Silver;
-            this.btnStartPause.BackgroundImage = global::LazyPomo.Properties.Resources.pomoStart;
-            this.btnStartPause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnStartPause.FlatAppearance.BorderSize = 0;
-            this.btnStartPause.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnStartPause.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnStartPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStartPause.Location = new System.Drawing.Point(286, 220);
-            this.btnStartPause.Name = "btnStartPause";
-            this.btnStartPause.Size = new System.Drawing.Size(46, 53);
-            this.btnStartPause.TabIndex = 3;
-            this.btnStartPause.TabStop = false;
-            this.btnStartPause.Text = "Start";
-            this.btnStartPause.UseVisualStyleBackColor = false;
-            this.btnStartPause.Click += new System.EventHandler(this.btnStartPause_Click);
-            // 
             // btnPin
             // 
-            this.btnPin.BackColor = System.Drawing.Color.Transparent;
+            this.btnPin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.btnPin.BackgroundImage = global::LazyPomo.Properties.Resources.pinOff1;
             this.btnPin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnPin.FlatAppearance.BorderSize = 0;
-            this.btnPin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPin.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnPin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnPin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.btnPin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPin.Location = new System.Drawing.Point(168, 5);
             this.btnPin.Name = "btnPin";
@@ -529,18 +463,20 @@
             // 
             // btnSound
             // 
+            this.btnSound.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.btnSound.BackgroundImage = global::LazyPomo.Properties.Resources.soundOn;
             this.btnSound.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnSound.FlatAppearance.BorderSize = 0;
-            this.btnSound.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSound.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSound.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnSound.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.btnSound.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.btnSound.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSound.Location = new System.Drawing.Point(4, 6);
             this.btnSound.Name = "btnSound";
             this.btnSound.Size = new System.Drawing.Size(31, 27);
             this.btnSound.TabIndex = 0;
             this.btnSound.TabStop = false;
-            this.btnSound.UseVisualStyleBackColor = true;
+            this.btnSound.UseVisualStyleBackColor = false;
             this.btnSound.Click += new System.EventHandler(this.btnSound_Click);
             this.btnSound.MouseLeave += new System.EventHandler(this.btnSound_MouseLeave);
             this.btnSound.MouseHover += new System.EventHandler(this.btnSound_MouseHover);
@@ -555,14 +491,38 @@
             this.pnlMenuGradient.Size = new System.Drawing.Size(214, 5);
             this.pnlMenuGradient.TabIndex = 5;
             // 
-            // panel1
+            // pnlSlideGradient
             // 
-            this.panel1.BackgroundImage = global::LazyPomo.Properties.Resources.gradient;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(226, 8);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(148, 45);
-            this.panel1.TabIndex = 8;
+            this.pnlSlideGradient.BackColor = System.Drawing.Color.Transparent;
+            this.pnlSlideGradient.BackgroundImage = global::LazyPomo.Properties.Resources.gradient;
+            this.pnlSlideGradient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlSlideGradient.Location = new System.Drawing.Point(-1, 218);
+            this.pnlSlideGradient.Name = "pnlSlideGradient";
+            this.pnlSlideGradient.Size = new System.Drawing.Size(238, 10);
+            this.pnlSlideGradient.TabIndex = 7;
+            // 
+            // btnStartPauseRound
+            // 
+            this.btnStartPauseRound.BackColor = System.Drawing.Color.Transparent;
+            this.btnStartPauseRound.BackgroundImage = global::LazyPomo.Properties.Resources.pomoStart;
+            this.btnStartPauseRound.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnStartPauseRound.FlatAppearance.BorderSize = 2;
+            this.btnStartPauseRound.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStartPauseRound.Location = new System.Drawing.Point(75, 207);
+            this.btnStartPauseRound.Name = "btnStartPauseRound";
+            this.btnStartPauseRound.Size = new System.Drawing.Size(50, 50);
+            this.btnStartPauseRound.TabIndex = 2;
+            this.btnStartPauseRound.UseVisualStyleBackColor = false;
+            this.btnStartPauseRound.Click += new System.EventHandler(this.btnStartPauseRound_Click);
+            // 
+            // pbProgressbar
+            // 
+            this.pbProgressbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.pbProgressbar.Location = new System.Drawing.Point(2, 3);
+            this.pbProgressbar.Margin = new System.Windows.Forms.Padding(30);
+            this.pbProgressbar.Name = "pbProgressbar";
+            this.pbProgressbar.Size = new System.Drawing.Size(195, 195);
+            this.pbProgressbar.TabIndex = 2;
             // 
             // Form1
             // 
@@ -570,13 +530,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lime;
             this.ClientSize = new System.Drawing.Size(414, 290);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.circlePanel1);
-            this.Controls.Add(this.roundButton1);
-            this.Controls.Add(this.myButtonObject1);
             this.Controls.Add(this.btnStartPauseRound);
             this.Controls.Add(this.rtxtSave);
-            this.Controls.Add(this.btnStartPause);
             this.Controls.Add(this.pnlMain);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -603,7 +558,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnMain;
-        private System.Windows.Forms.Button btnStartPause;
         private System.Windows.Forms.Label lblPomoTotal;
         private System.Windows.Forms.Label lblLazyTotal;
         private System.Windows.Forms.Button btnPin;
@@ -634,10 +588,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlMenuGradient;
         private RoundButton btnStartPauseRound;
-        private Code.myButtonObject myButtonObject1;
-        private RoundButton roundButton1;
-        private CirclePanel circlePanel1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlSlideGradient;
     }
 }
 
